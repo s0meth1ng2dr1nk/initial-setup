@@ -27,7 +27,6 @@ apt update
 # setup python3
 apt install -y python3 python3-pip
 export PIP_ROOT_USER_ACTION=ignore
-pip3 install --break-system-packages curl_cffi
 
 # setup nodejs
 apt install -y nodejs npm
