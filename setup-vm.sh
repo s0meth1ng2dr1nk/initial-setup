@@ -2,6 +2,12 @@
 # export PASSWORD='' && wget --no-cache https://raw.githubusercontent.com/s0meth1ng2dr1nk/initial-setup/main/setup-vm.sh -O setup-vm.sh && sudo --preserve-env=PASSWORD bash setup-vm.sh && rm -f setup-vm.sh
 set -eu
 
+# create swap
+fallocate -l 8G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+
 apt update
 
 # setup ssh
