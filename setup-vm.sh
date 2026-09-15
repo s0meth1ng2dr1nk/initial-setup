@@ -40,4 +40,5 @@ rm -f get-docker.sh
 # setup claude
 wget --no-cache https://claude.ai/install.sh -O install.sh
 bash install.sh
+rm -f install.sh
 grep -qx 'export PATH="${HOME}/.local/bin:${PATH}"' /etc/profile || echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> /etc/profile
