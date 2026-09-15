@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # create swap
-fallocate -l 8G /swapfile
+fallocate -l 4G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
