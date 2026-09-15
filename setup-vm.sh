@@ -24,6 +24,7 @@ systemctl restart ssh*
 
 # setup init
 apt update
+apt-get update
 
 # setup python3
 apt install -y python3 python3-pip
@@ -42,3 +43,13 @@ wget --no-cache https://claude.ai/install.sh -O install.sh
 bash install.sh
 rm -f install.sh
 echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> /etc/profile
+
+# setup git-lfs
+wget --no-cache https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh -O script.deb.sh
+bash script.deb.sh
+rm -f script.deb.sh
+sudo apt-get update
+apt-get install git-lfs
+git lfs install
+git lfs install --system
+echo 'export GIT_LFS_SKIP_SMUDGE=0' >> /etc/profile
