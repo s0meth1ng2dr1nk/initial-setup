@@ -26,7 +26,7 @@ apt update
 
 # setup python3
 apt install -y python3 python3-pip
-export PIP_ROOT_USER_ACTION=ignore
+echo 'export PIP_ROOT_USER_ACTION=ignore' >> /etc/profile
 
 # setup nodejs
 apt install -y nodejs npm
