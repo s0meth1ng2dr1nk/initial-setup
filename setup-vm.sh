@@ -8,8 +8,6 @@ chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 
-apt update
-
 # setup ssh
 echo "root:${PASSWORD}" | chpasswd
 grep -rl ssh_pwauth /etc/cloud | xargs -r sed -i -E -e 's@^ssh_pwauth.*@ssh_pwauth:true@'
@@ -23,6 +21,9 @@ grep -rl PasswordAuthentication /etc/ssh | xargs -r sed -i -E \
     -e '$aUsePAM yes'
 systemctl restart ssh*
 
+# setup init
+apt update
+
 # setup python3
 apt install -y python3 python3-pip
 export PIP_ROOT_USER_ACTION=ignore
@@ -35,3 +36,8 @@ apt install -y nodejs npm
 wget --no-cache https://get.docker.com -O get-docker.sh
 bash get-docker.sh
 rm -f get-docker.sh
+
+# setup claude
+wget --no-cache https://claude.ai/install.sh -O install.sh
+bash install.sh
+echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> /etc/profile
