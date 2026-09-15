@@ -1,6 +1,6 @@
 #!/bin/bash
 # export PASSWORD='' && wget --no-cache https://raw.githubusercontent.com/s0meth1ng2dr1nk/initial-setup/main/setup-vm.sh -O setup-vm.sh && sudo --preserve-env=PASSWORD bash setup-vm.sh && rm -f setup-vm.sh
-set -eu
+set -euo pipefail
 
 # create swap
 fallocate -l 8G /swapfile
@@ -40,4 +40,4 @@ rm -f get-docker.sh
 # setup claude
 wget --no-cache https://claude.ai/install.sh -O install.sh
 bash install.sh
-echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> /etc/profile
+grep -qx 'export PATH="${HOME}/.local/bin:${PATH}"' /etc/profile || echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> /etc/profile
